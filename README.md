@@ -886,6 +886,68 @@ Screenshot of nwell rules
 
 Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
 ![Screenshot 2024-12-21 020849](https://github.com/user-attachments/assets/a07df1a0-9b55-47eb-bfb9-9cad1ea18383)
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot 2024-12-21 020733](https://github.com/user-attachments/assets/1c249221-9482-4fe9-98c7-deda5f24e8da)
+
+Commands to run in tkcon window
+
+```tcl
+# Loading updated tech file
+tech load sky130A.tech
+
+# Change drc style to drc full
+drc style drc(full)
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+
+Screenshot of magic window with rule implemented
+
 ![Screenshot 2024-12-21 021017](https://github.com/user-attachments/assets/eaee46f8-a1f0-4725-b891-1a03f6154db7)
+
+# Day 4 : Pre-layout timing analysis and importance of good clock tree 
+## Section 4 - Pre-layout timing analysis and importance of good clock tree 
+
+### Theory
+
+
+# Timing Modeling Using Delay Tables and Converting Grid Info to Track Info
+
+In this section, we'll explore timing modeling using delay tables and the process of converting grid information to track information. Let's break it down step by step:
+
+## Timing Modeling with Delay Tables
+
+1. **Delay Tables:**
+   - Delay tables provide information about the delay (propagation time) of signals through various components (such as gates, wires, and interconnects).
+   - These tables help estimate signal arrival times and ensure proper timing in the design.
+
+2. **Usage:**
+   - During the physical design process, delay tables are used to model the behavior of standard cells, macros, and other components.
+   - They guide the placement and routing tools to optimize signal paths for timing closure.
+
+## Converting Grid Info to Track Info
+
+1. **Purpose:**
+   - In physical design, we need to convert grid information (such as rows and columns) into track information.
+   - Tracks represent predefined horizontal and vertical paths on each metal layer.
+
+2. **Considerations:**
+   - When designing standard cells, keep the following in mind:
+     - Input and output ports should align with the intersection of vertical and horizontal tracks.
+     - The standard cell's width should be an odd multiple of the track pitch, and its height should be an odd multiple of the vertical track pitch.
+
+3. **LEF File Extraction:**
+   - To proceed further, we require the LEF (Library Exchange Format) file for the Inverter cell.
+   - Extract it from the current Inverter cell to provide essential information for the place-and-route (PNR) process.
+
+4. **Understanding Tracks:**
+   - Open the `tracks.info` file to learn more about the horizontal and vertical tracks available on each metal layer.
+   - This file specifies pitch, spacing, and other relevant details necessary for efficient routing.
 
 
