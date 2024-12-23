@@ -553,10 +553,10 @@ PnR tools require minimal information, including the PR boundary (bounding box) 
 LEF files provide an abstract representation of the block, exposing only the essential details needed for PnR.
 
 
+Cell LEF	 Abstract view of the cell which holds information about PR boundary, pin positions and metal layer information. 
+ Technology LEF Holds information about the metal layers, via, DRC technology used by placer and router.
 
-| Cell LEF	 | Abstract view of the cell which holds information about PR boundary, pin positions and metal layer information.  |
-|---------------|---------------|
-| Technology LEF | Holds information about the metal layers, via, DRC technology used by placer and router.|
+![image](https://github.com/user-attachments/assets/4e4795f0-60d3-4080-bbb8-5f26ad1b97c5)
 
 VLSI Routing: Tracks and Routes
 
