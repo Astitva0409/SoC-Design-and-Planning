@@ -1493,4 +1493,71 @@ Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/22-12
 
 ![Screenshot 2024-12-23 015127](https://github.com/user-attachments/assets/a305541c-4fa8-43ac-8202-78b831beed35)
 
+#### 3. Post-Route parasitic extraction using SPEF extractor.
+
+Commands for SPEF extraction using external tool
+
+```bash
+# Change directory
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+# Command extract spef
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+```
+
+#### 4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+
+```tcl
+# Command to run OpenROAD tool
+openroad
+
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/22-12_11-34/tmp/merged.lef
+
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/22-12_11-34/results/routing/picorv32a.def
+
+# Creating an OpenROAD database to work with
+write_db pico_route.db
+
+# Loading the created database in OpenROAD
+read_db pico_route.db
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/22-12_11-34/results/synthesis/picorv32a.synthesis_preroute.v
+
+# Read library for design
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+# Link design and library
+link_design picorv32a
+
+# Read in the custom sdc we created
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+# Setting all cloks as propagated clocks
+set_propagated_clock [all_clocks]
+
+# Read SPEF
+read_spef /openLANE_flow/designs/picorv32a/runs/22-12_11-34/results/routing/picorv32a.spef
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
+```
+
+![Screenshot 2024-12-24 031209](https://github.com/user-attachments/assets/80a40f15-5964-492a-99ce-b3089d7e5408)
+
+![Screenshot 2024-12-24 031221](https://github.com/user-attachments/assets/9369898b-875b-48fd-a14d-0e12c897daec)
+
+![Screenshot 2024-12-24 031228](https://github.com/user-attachments/assets/de45ba9d-892d-4502-a015-a98dd253c9ef)
+
+![Screenshot 2024-12-24 031234](https://github.com/user-attachments/assets/c6cbf686-5911-4ab0-aed1-633e7b1835c7)
+
+
+
 
