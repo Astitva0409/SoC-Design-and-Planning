@@ -1191,6 +1191,109 @@ Comparing to previously noted run values area has increased and worst negative s
 ![Screenshot 2024-12-22 154505](https://github.com/user-attachments/assets/923a0c60-1dc0-464a-ae3d-a5426a88b1f6)
 
 
+#### 8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+
+Now that our custom inverter is properly accepted in synthesis we can now run floorplan using following command
+
+```tcl
+# Now we can run floorplan
+run_floorplan
+```
+we get error while running the command
+
+![Screenshot 2024-12-22 160903](https://github.com/user-attachments/assets/e55bd4cc-4b65-42c5-8b18-bd85fa30c718)
+
+
+```tcl
+# Follwing commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+```
+
+Screenshots of commands run
+
+![Screenshot 2024-12-22 161945](https://github.com/user-attachments/assets/f1025b8b-0ea2-4ea5-a473-772c59631471)
+```tcl
+# Now we are ready to run placement
+run_placement
+```
+
+Screenshots of command run
+
+![Screenshot 2024-12-22 162024](https://github.com/user-attachments/assets/4ace1b6f-df56-45a7-a58b-7fdcc9648cf5)
+
+![Screenshot 2024-12-22 162356](https://github.com/user-attachments/assets/7711d8fa-32d4-465d-9ee4-a7c272f625a7)
+
+Commands to load placement def in magic in another terminal
+
+```bash
+# Change directory to path containing generated placement def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+Screenshot of placement def in magic
+
+![Screenshot 2024-12-22 162954](https://github.com/user-attachments/assets/396e5337-a590-4049-aa05-4f3078dc8edd)
+
+
+Command for tkcon window to view internal layers of cells
+
+```tcl
+# Command to view internal connectivity layers
+expand
+```
+
+Screenshot of custom inverter inserted in placement
+
+![Screenshot 2024-12-22 163249](https://github.com/user-attachments/assets/7cd5c66c-3ce1-4bd3-bdd8-5dca66f2955e)
+
+#### 9. Do Post-Synthesis timing analysis with OpenSTA tool.
+
+Since we are having 0 wns after improved timing run we are going to do timing analysis on initial run of synthesis which has lots of violations and no parameters were added to improve timing
+
+Commands to invoke the OpenLANE flow include new lef and perform synthesis 
+
+```bash
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+```
+```tcl
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+Newly created `pre_sta.conf` for STA analysis in `openlane` directory
+
+![Screenshot 2024-12-22 231405](https://github.com/user-attachments/assets/cab2565e-5311-4b79-a1c1-3a989cd4e5ca)
+
+
+Newly created `my_base.sdc` for STA analysis in `openlane/designs/picorv32a/src` directory based on the file `openlane/scripts/base.sdc`
+
+![Screenshot 2024-12-22 231258](https://github.com/user-attachments/assets/90fff94a-b7c4-4c54-b485-9c82eacfa272)
+
 
 
 
