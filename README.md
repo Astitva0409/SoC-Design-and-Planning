@@ -134,3 +134,20 @@ Routing:
         Once routing is completed, the chip undergoes various checks during the sign-off stage:
             Physical Verification Checks: Design Rule Check (DRC) and Layout vs. Schematic (LVS). DRC verifies design rule compliance, while LVS ensures functional correctness against the gate-level netlist.
             Timing Checks: Static Timing Analysis (STA) checks the design for timing violations.
+
+</details>
+
+### Implementation
+
+Section 1 tasks:- 
+
+1. Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
+
+2. Calculate the flop ratio.
+
+```math
+Flop\ Ratio = \frac{Number\ of\ D\ Flip\ Flops}{Total\ Number\ of\ Cells}
+```
+```math
+Percentage\ of\ DFF's = Flop\ Ratio * 100
+```
