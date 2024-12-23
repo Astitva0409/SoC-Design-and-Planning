@@ -139,6 +139,43 @@ Routing:
 
 ### Implementation
 
+1.  Understanding the use of various linux commands
+
+  -  pwd : It displays the present working directory and its path.
+
+   - cd : Using this command we can move in both ways in the directory tree.
+
+- ls : It lists all the sub-directories and files present in the current directory.
+
+ - mkdir : Using this command, we can create a new directory.
+
+  -  rmdir : Using his command, we can delete an existing directory.
+
+ -   rm : This command is used to delete the files.
+
+  -  help : using this command we can know the working of any command.
+
+   - clear : This command clears the terminal.
+
+
+
+  Key Files and Directories:
+
+    libs.ref: Houses the design libraries, including standard cells, IO cells, and other related files.
+        lef: Library Exchange Format files describing the cell layouts.
+        lib: Liberty files for timing and power analysis.
+        gds: GDSII files containing the graphical layout of the cells.
+        verilog: Verilog models of the cells.
+
+    libs.tech: Contains technology files tailored for specific EDA tools.
+        magic: Magic technology files.
+        klayout: KLayout technology files and layer properties.
+        ngspice: SPICE models for circuit simulation.
+        openroad: Files for OpenROAD flow.
+        drc: Design Rule Check files.
+        lvs: Layout Versus Schematic check files.
+        pex: Parasitic Extraction files.
+
 Section 1 tasks:- 
 
 1. Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
@@ -160,20 +197,19 @@ Commands to invoke the OpenLANE flow and perform synthesis
 cd Desktop/work/tools/openlane_working_dir/openlane
 
 # alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
-# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
 docker
 ```
 ```tcl
 # Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
 ./flow.tcl -interactive
 
-# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+# Now that OpenLANE flow is open we have to input the required packages 
 package require openlane 0.9
 
-# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design 
 prep -design picorv32a
 
-# Now that the design is prepped and ready, we can run synthesis using following command
+# Now that the design is prepped and ready, we can run synthesis using the command
 run_synthesis
 
 # Exit from OpenLANE flow
