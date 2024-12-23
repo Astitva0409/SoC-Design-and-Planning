@@ -781,6 +781,111 @@ Fall\ Cell\ Delay = 1.208- 1.20491 = 0.00309\ ns = 30.9\ ps
 
 #### 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
 
+## LEF File Creation
+Now that we have successfully characterized the inverter, the next step is to create a LEF (Library Exchange Format) file.
 
+**VLSI Layout Geometries and DRC Errors**
+
+In this section, we explore independent example layout geometries (M3.1, M3.2, M3.5, and M3.6) and highlight the specific DRC (Design Rule Check) errors associated with each:
+
+1. **M3.1 (Metal Width DRC):**
+   - Violation: The metal trace width in M3.1 is below the specified minimum width threshold.
+   - Error: Metal width does not meet design rules.
+
+2. **M3.2 (Metal Spacing DRC):**
+   - Violation: The distance between adjacent metal traces in M3.2 does not meet the required spacing.
+   - Error: Metal spacing violation.
+
+3. **M3.5 (Via Overlapping DRC):**
+   - Violation: The vias in M3.5 overlap with each other.
+   - Error: Via overlapping issue.
+
+4. **M3.6 (Minimum Area DRC):**
+   - Violation: The enclosed area within M3.6 does not meet the specified minimum area requirement.
+   - Error: Minimum area violation.
+Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
+
+```bash
+# Change to home directory
+cd
+
+# Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Since lab file is compressed command to extract it
+tar xfz drc_tests.tgz
+
+# Change directory into the lab folder
+cd drc_tests
+
+# List all files and directories present in the current directory
+ls -al
+
+# Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+```
+
+Screenshots of commands run
+![Screenshot 2024-12-20 235848](https://github.com/user-attachments/assets/f8e940b9-7f84-4eec-bdba-28581b9d98b2)
+
+![Screenshot 2024-12-20 235936](https://github.com/user-attachments/assets/cc65f100-7c9b-489d-89d2-92a03ccec7cd)
+
+# Using Magic Tool: Filling an Area with Metal 3 and Creating a VIA2 Mask
+
+In this guide, we'll demonstrate how to fill a selected area with metal 3 and create a VIA2 mask using the Magic layout tool.
+
+## Steps:
+
+1. **Select an Area and Fill with Metal 3:**
+   - Open the Magic GUI.
+   - Select the desired area on your layout.
+   - Guide the pointer to the metal 3 layer.
+   - Press `P` to fill the selected region with metal 3.
+
+2. **Create the VIA2 Mask:**
+   - Open the `tkcon` terminal within Magic.
+   - Type the command: `cif see VIA2`.
+   - The metal 3-filled area will now be associated with the VIA2 mask.
+
+Incorrectly implemented poly.9 rule no drc violation even though spacing < 0.48u
+
+![image](https://github.com/user-attachments/assets/c2a6d5db-2e05-45c8-9496-139aafacbc21)
+
+New commands inserted in sky130A.tech file to update drc
+
+![Screenshot 2024-12-21 003938](https://github.com/user-attachments/assets/be0687ce-ef8a-4b96-a294-5035c9b40094)
+
+![Screenshot 2024-12-21 004437](https://github.com/user-attachments/assets/0cb69ff9-1f14-4a3a-92c4-adda08252eab)
+
+
+Commands to run in tkcon window
+
+```tcl
+# Loading updated tech file
+tech load sky130A.tech
+
+# Must re-run drc check to see updated drc errors
+drc check
+
+# Selecting region displaying the new errors and getting the error messages 
+drc why
+```
+
+Screenshot of magic window with rule implemented
+
+![Screenshot 2024-12-21 005623](https://github.com/user-attachments/assets/487b5768-83ba-4fae-972a-dba9bca893e3)
+
+**Incorrectly implemented nwell.4 complex rule correction**
+
+Screenshot of nwell rules
+
+![image](https://github.com/user-attachments/assets/f1b30b9e-dee4-4297-94fa-8b7341f68ba4)
+
+Incorrectly implemented nwell.4 rule no drc violation even though no tap present in nwell
+![Screenshot 2024-12-21 020849](https://github.com/user-attachments/assets/a07df1a0-9b55-47eb-bfb9-9cad1ea18383)
+![Screenshot 2024-12-21 021017](https://github.com/user-attachments/assets/eaee46f8-a1f0-4725-b891-1a03f6154db7)
 
 
