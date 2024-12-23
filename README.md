@@ -211,11 +211,26 @@ prep -design picorv32a
 
 # Now that the design is prepped and ready, we can run synthesis using the command
 run_synthesis
-
-# Exit from OpenLANE flow
-exit
-
-# Exit from OpenLANE flow docker sub-system
-exit
 ```
 
+Screenshots of running the commands
+
+![Screenshot 2024-12-14 152420](https://github.com/user-attachments/assets/5f4206bb-6126-4bf1-b60a-d96182ca7287)
+<br>
+![Screenshot 2024-12-14 154234](https://github.com/user-attachments/assets/4d1c7608-a57d-4c0a-8583-be9b35a2b638)
+
+#### 2. Calculate the flop ratio.
+
+Screenshots of synthesis statistics with required values
+
+![Screenshot 2024-12-14 160609](https://github.com/user-attachments/assets/5c0eec3e-e613-462a-8491-5e6d12dd2563)
+![Screenshot 2024-12-14 160621](https://github.com/user-attachments/assets/79016848-a30a-48f8-87eb-ab05aed833ad)
+
+Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
+```math
+Flop\ Ratio = \frac{1613}{14876} = 0.108429685
+```
+```math
+Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
+```
