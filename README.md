@@ -1100,4 +1100,99 @@ Edited config.tcl to include the added lef and change library to ones we added i
 
 ![Screenshot 2024-12-22 144904](https://github.com/user-attachments/assets/f89c51ec-0e5d-4231-babc-b0c4d8d92269)
 
+#### 6. Run openlane flow synthesis with newly inserted custom inverter cell.
+
+Commands to invoke the OpenLANE flow include new lef and perform synthesis 
+
+```bash
+# Change directory to openlane flow directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+docker
+```
+```tcl
+# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+./flow.tcl -interactive
+
+# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+package require openlane 0.9
+
+# Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
+prep -design picorv32a
+
+# Adiitional commands to include newly added lef to openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+
+Screenshots of commands run
+
+![Screenshot 2024-12-22 145315](https://github.com/user-attachments/assets/1ec35d3b-e571-46fa-921c-cb6265c77a57)
+
+![Screenshot 2024-12-22 150129](https://github.com/user-attachments/assets/e873a026-2619-46bb-aa46-d114fa21b5df)
+
+#### 7. Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+
+Noting down current design values generated before modifying parameters to improve timing
+
+![Screenshot 2024-12-22 150212](https://github.com/user-attachments/assets/08dd8582-b8e0-4189-bdcc-ebfca5a6da26)
+
+![Screenshot 2024-12-22 150223](https://github.com/user-attachments/assets/406e353e-9d78-495f-b17d-488382f5d2c7)
+
+Commands to view and change parameters to improve timing and run synthesis
+
+```tcl
+# Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 24-03_10-03 -overwrite
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+
+Screenshot of merged.lef in `tmp` directory with our custom inverter as macro
+
+![Screenshot 2024-12-22 155033](https://github.com/user-attachments/assets/6b550e6e-0c2d-414a-be92-90cb9536683c)
+
+Screenshots of command run
+
+![Screenshot 2024-12-22 154324](https://github.com/user-attachments/assets/af59e4b2-ee67-44f8-a6ee-6e84d344935c)
+
+Comparing to previously noted run values area has increased and worst negative slack has become 0
+
+![Screenshot 2024-12-22 154455](https://github.com/user-attachments/assets/beeb9fd1-e5cd-4741-b89e-8161b23b4f34)
+
+![Screenshot 2024-12-22 154505](https://github.com/user-attachments/assets/923a0c60-1dc0-464a-ae3d-a5426a88b1f6)
+
+
+
+
+
+
 
