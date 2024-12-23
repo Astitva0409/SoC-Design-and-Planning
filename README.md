@@ -652,7 +652,8 @@ ext2spice
 ![Screenshot 2024-12-20 004218](https://github.com/user-attachments/assets/ee6b7964-8022-4b9b-8461-48f7df369d11)
 
 Screenshot of created spice file
-![Screenshot 2024-12-20 011035](https://github.com/user-attachments/assets/00484b7c-2289-4fc1-91b1-5f7896aa54dc)
+
+![Screenshot 2024-12-19 222928](https://github.com/user-attachments/assets/445fd979-f08b-4cd3-ad4e-887b751f496a)
 
 #### 4. Editing the spice model file for analysis through simulation.
 
