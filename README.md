@@ -730,3 +730,11 @@ Fall\ transition\ time = Time\ taken\ for\ output\ to\ fall\ to\ 20\% - Time\ ta
 
 20% Screenshots
 
+![Screenshot 2024-12-20 155819](https://github.com/user-attachments/assets/06d01d45-39e5-46bc-8747-338ccb53d5e0)
+ 
+80% Screenshots
+![Screenshot 2024-12-20 155757](https://github.com/user-attachments/assets/eae49709-61a1-4586-83e1-c47a98e76a9e)
+
+![Screenshot 2024-12-20 155839](https://github.com/user-attachments/assets/d42b6d9b-a44e-459c-b061-e51f6645042b)
+
+
