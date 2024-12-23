@@ -121,13 +121,14 @@ Placement:
         Clock routing is performed before signal routing to address clock skew, the difference in time for the clock to reach various destinations.
         Symmetric Tree Structures (H-tree, I-tree, X-tree) are used to eliminate clock skew.
 
-![Screenshot 2024-12-23 171046](https://github.com/user-attachments/assets/761e3cad-ccf8-43f1-90ad-21a63e7ca71a)
+![Screenshot 2024-12-23 171035](https://github.com/user-attachments/assets/8a6f256a-b330-43e4-be7f-f42e6feb63d9)
 
 Routing:
         After clock routing, signal routing is performed using the remaining metal layers.
         Routing is divided into Global Routing (generates a routing guide based on PDK instructions) and Detailed Routing (actual routing according to the guide).
 
-![Screenshot 2024-12-23 171035](https://github.com/user-attachments/assets/8a6f256a-b330-43e4-be7f-f42e6feb63d9)
+![Screenshot 2024-12-23 171046](https://github.com/user-attachments/assets/761e3cad-ccf8-43f1-90ad-21a63e7ca71a)
+
 
  Sign-off:
         Once routing is completed, the chip undergoes various checks during the sign-off stage:
