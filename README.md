@@ -16,7 +16,7 @@ Identified the different views of cells (Liberty, HDL, SPICE, Layout).
 3. Floor and Power Planning:
 Understood the significance of floor planning in chip partitioning and I/O pad placement.
 
-## Section 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK (14/03/2024 - 15/03/2024)
+## Section 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK Day 1
 
 ### Theory
 
