@@ -737,4 +737,50 @@ Fall\ transition\ time = Time\ taken\ for\ output\ to\ fall\ to\ 20\% - Time\ ta
 
 ![Screenshot 2024-12-20 155839](https://github.com/user-attachments/assets/d42b6d9b-a44e-459c-b061-e51f6645042b)
 
+```math
+Fall\ transition\ time = 8.09732 - 8.05527 = 0.04205\ ns = 42.05\ ps
+```
+
+Rise Cell Delay Calculation
+
+```math
+Rise\ Cell\ Delay = Time\ taken\ for\ output\ to\ rise\ to\ 50\% - Time\ taken\ for\ input\ to\ fall\ to\ 50\%
+```
+```math
+50\%\ of\ 3.3\ V = 1.65\ V
+```
+
+50% Screenshots
+![Screenshot 2024-12-20 160737](https://github.com/user-attachments/assets/dd2d2852-d12a-44c2-81d9-df4b6a2bd0ce)
+
+![Screenshot 2024-12-20 160724](https://github.com/user-attachments/assets/137542d3-eb45-43cc-a423-42a6c4940f1f)
+
+```math
+Rise\ Cell\ Delay = 6.21492 - 6.14984 = 0.06508\ ns = 65.08\ ps
+```
+
+Fall Cell Delay Calculation
+
+```math
+Fall\ Cell\ Delay = Time\ taken\ for\ output\ to\ fall\ to\ 50\% - Time\ taken\ for\ input\ to\ rise\ to\ 50\%
+```
+```math
+50\%\ of\ 3.3\ V = 1.65\ V
+```
+
+50% Screenshots
+
+![Screenshot 2024-12-20 161027](https://github.com/user-attachments/assets/9344b0d2-8d76-4a20-98b4-19db906e24cd)
+
+![Screenshot 2024-12-20 161017](https://github.com/user-attachments/assets/1f75ec54-5a73-467e-bca9-46780b31cfa9)
+
+
+```math
+Fall\ Cell\ Delay = 1.208- 1.20491 = 0.00309\ ns = 30.9\ ps
+```
+
+#### 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+
+
 
