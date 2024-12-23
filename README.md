@@ -335,3 +335,30 @@ Port layer as set through config.tcl
 ![Screenshot 2024-12-16 221902](https://github.com/user-attachments/assets/81d3dce4-ab8a-49b5-9b5b-73e0efe23389)
 
 ![Screenshot 2024-12-16 222138](https://github.com/user-attachments/assets/5bbf0ac2-b589-40e5-b6dc-56c9db0fbcdf)
+
+#### 4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+
+Command to run placement
+
+```tcl
+# Congestion aware placement by default
+run_placement
+```
+
+Screenshots of placement run
+
+![Screenshot 2024-12-17 221757](https://github.com/user-attachments/assets/8734e380-1803-4320-b4ef-b69f2e8a1c9a)
+
+#### 5. Load generated placement def in magic tool and explore the placement.
+
+Commands to load placement def in magic in another terminal
+
+```bash
+# Change directory to path containing generated placement def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+Screenshots of floorplan def in magic
