@@ -343,22 +343,6 @@ run_synthesis
 # Now we can run floorplan
 run_floorplan
 ```
-## Design Alignment Instructions
-
-### Centering the Design:
-1. Press `S` to select the entire design.
-2. Press `V` to vertically align it to the middle of the screen.
-
-### Zooming In on a Specific Area:
-1. Left-click and drag to select the desired region.
-2. Right-click to bring up the context menu.
-3. Press `Z` to zoom in on the selected area.
-
-### Getting Details of a Cell:
-1. Move your cursor to the cell of interest.
-2. Press `S` to select the cell.
-3. In the `tkcon` window, enter the command "what"  to display cell details.
-
 
 Screenshot of floorplan run
 
@@ -406,6 +390,22 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 # Command to load the floorplan def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
+
+## Design Alignment Instructions
+
+### Centering the Design:
+1. Press `S` to select the entire design.
+2. Press `V` to vertically align it to the middle of the screen.
+
+### Zooming In on a Specific Area:
+1. Left-click and drag to select the desired region.
+2. Right-click to bring up the context menu.
+3. Press `Z` to zoom in on the selected area.
+
+### Getting Details of a Cell:
+1. Move your cursor to the cell of interest.
+2. Press `S` to select the cell.
+3. In the `tkcon` window, enter the command "what"  to display cell details.
 
 Screenshots of floorplan def in magic
 
