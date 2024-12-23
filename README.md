@@ -257,6 +257,8 @@ Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
 ## Good FloorPlan Vs Bad FloorPlan and Introduction to Library Cells
 Chip FloorPlanning Considerations
 
+![Screenshot 2024-12-23 182719](https://github.com/user-attachments/assets/8c329dde-649e-4d44-b4ea-4f59807455af)
+
 Utilization Factor and Aspect Ratio
 In order to find out the Utilization Factor and Aspect Ratio, first we need to know how to define height and width of core and die areas.
 
@@ -267,7 +269,14 @@ In order to find out the Utilization Factor and Aspect Ratio, first we need to k
 
 The height and width of core area will be decided by the netlist of the design. It will be based on the no.of components required in order to execute the logic and the height and width of the die area will be dependent on the core area height and width.
 
+
+![Screenshot 2024-12-23 182729](https://github.com/user-attachments/assets/bfe35d3a-bde0-429a-b8d3-01e29732af70)
+
 For example, lets consider a netlist that is having two logic gates and two flipflops each having area of 1 sq.unit. The netlist contains 4 elements and the minimum total area required for the core area will be 4 sq.units.
+
+![Screenshot 2024-12-23 182737](https://github.com/user-attachments/assets/62e5dfca-573e-4dee-a276-7aefd4544b87)
+
+![Screenshot 2024-12-23 182743](https://github.com/user-attachments/assets/b10af20a-cb19-47fa-8866-26fca8b8a966)
 
 *Utilization Factor :*  Utilization Factor is defined as "The ratio of the core area occupied by the netlist to the total core area".For a good FloorPlan, The Utilization Factor should never be '1' because when the Utilization factor becomes '1' , there will be no place for adding additional logic if needed and it will be considered as a bad FloorPlan.
 
@@ -278,6 +287,7 @@ For example, lets consider a netlist that is having two logic gates and two flip
 
 `Aspect Ratio = (Height of the core / Width of the core)`
 
+![Screenshot 2024-12-23 182748](https://github.com/user-attachments/assets/1136065b-0b77-41cb-9b98-da09f2801b0a)
 
 In this case, when calculated
 
@@ -286,6 +296,9 @@ In this case, when calculated
 - Aspect Ratio = (2 units)/(2 units) = 1 //The core is in a square shape.
 
 In this case, when calculated
+
+
+![Screenshot 2024-12-23 182752](https://github.com/user-attachments/assets/3763557e-5995-43a1-bdaf-c18ce41e7cee)
 
 - Utilization factor = (4 squnits)/(8 squnits) = 0.5
 
