@@ -598,3 +598,38 @@ In VLSI design, understanding tracks and routes is essential for successful inte
 4. Editing the spice model file for analysis through simulation.
 5. Post-layout ngspice simulations.
 6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+#### 1. Clone custom inverter standard cell design from github repository
+
+```bash
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+Screenshot of commands run
+![Screenshot 2024-12-18 231253](https://github.com/user-attachments/assets/23ec7409-aedb-403a-ad4f-17d622277448)
+
+#### 2. Load the custom inverter layout in magic and explore.
+
+Screenshot of custom inverter layout in magic NMOS and PMOS identified
+
+![Screenshot 2024-12-19 214039](https://github.com/user-attachments/assets/e56518d8-de6d-4f02-add9-d1cecf2ca8c3)
+
+![Screenshot 2024-12-19 214132](https://github.com/user-attachments/assets/fa9de724-f830-43e4-892a-e0b1c72f4de8)
+
+
