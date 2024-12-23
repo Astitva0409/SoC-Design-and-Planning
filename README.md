@@ -420,6 +420,18 @@ Port layer as set through config.tcl
 
 #### 4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
 
+Placement plays a crucial role in VLSI (Very Large Scale Integration) design. It involves determining the physical locations of standard cells or logic elements within a chip or block. Let's break it down:
+
+1. **Global Placement:**
+   - Global placement assigns general locations to movable objects (cells).
+   - Some overlaps between placed objects are allowed during this stage.
+   - The goal is to achieve a rough layout that satisfies area constraints.
+
+2. **Detailed Placement:**
+   - Detailed placement refines the object locations obtained from global placement.
+   - It enforces non-overlapping constraints and ensures that cells are placed on legal cell sites.
+   - The quality of detailed placement significantly impacts subsequent routing stages.
+
 Command to run placement
 
 ```tcl
@@ -445,6 +457,34 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 Screenshots of floorplan def in magic
 ![Screenshot 2024-12-17 223714](https://github.com/user-attachments/assets/770bc892-6880-40ae-98ad-3d447908f70c)
+
+### Inputs Item                                                                                               
+
+ PDKs                    Process Design Kits (PDKs) provide technology-specific information for chip design.        
+ DRC and LVS rules        Design Rule Check (DRC) and Layout vs. Schematic (LVS) rules ensure layout compliance.      
+SPICE models             These models describe transistor behavior for circuit simulation.                            
+ Library & User-defined specs  Custom libraries and specifications specific to your project.                               
+
+### Design Steps
+1. **Circuit Design:**
+   - Create the logical schematic of your circuit.
+   - Define the functionality and connections of standard cells.
+
+2. **Layout Design:**
+   - Use layout tools (e.g., MAGIC) to create the physical layout.
+   - Follow design rules and guidelines for placement and routing.
+
+3. **Characterization using GUNA:**
+   - Perform timing, power, and noise characterizations.
+   - Validate the design against specifications.
+
+### Outputs
+- **CDL (Circuit Description Language):** A textual representation of the circuit.
+- **GDSII:** The layout file in GDSII format for fabrication.
+- **LEF (Library Exchange Format):** Contains information about cell sizes, pin locations, and other details.
+- **Spice Extracted Netlist:** Includes parasitic information for circuit simulation.
+- **Timing, Noise, and Power Libraries:** Generated during characterization.
+
 
 ## Section 3 - Design library cell using Magic Layout and ngspice characterization Day 3 
 
