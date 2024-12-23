@@ -985,4 +985,80 @@ magic -T sky130A.tech sky130_inv.mag &
 
 Screenshot of tracks.info of sky130_fd_sc_hd
 
+![Screenshot 2024-12-22 124653](https://github.com/user-attachments/assets/ea5ac0cc-3cc5-475c-8ea6-06a3dcef5763)
+
+Commands for tkcon window to set grid as tracks of locali layer
+
+```tcl
+# Get syntax for grid command
+help grid
+
+# Set grid values accordingly
+grid 0.46um 0.34um 0.23um 0.17um
+```
+Screenshot of commands run & Condition 1 verified
+
+![Screenshot 2024-12-22 133405](https://github.com/user-attachments/assets/b8b59c22-8384-46f1-8b4e-0a39bdc9abd9)
+
+Condition 2 verified
+
+```math
+Horizontal\ track\ pitch = 0.46\ um
+```
+
+![Screenshot 2024-12-22 133938](https://github.com/user-attachments/assets/bd761146-6db3-4e7a-bcdc-213e4138bb0a)
+
+```math
+Width\ of\ standard\ cell ~1.38\ um = 0.46 * 3
+```
+Condition 3 verified
+
+```math
+Vertical\ track\ pitch = 0.34\ um
+```
+
+![Screenshot 2024-12-22 134136](https://github.com/user-attachments/assets/78baa0f1-def0-4f25-9f40-0eba3cf4dae2)
+
+```math
+Height\ of\ standard\ cell ~ 2.72\ um = 0.34 * 8
+```
+
+
+#### 2. Save the finalized layout with custom name and open it.
+
+Command for tkcon window to save the layout with custom name
+
+```tcl
+# Command to save as
+save sky130_vsdinv.mag
+```
+
+Command to open the newly saved layout
+
+```bash
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_vsdinv.mag &
+```
+
+Screenshot of newly saved layout
+![Screenshot 2024-12-22 134743](https://github.com/user-attachments/assets/b440aa3c-e6ab-4721-a415-fc88f30aaf90)
+
+#### 3. Generate lef from the layout.
+
+Command for tkcon window to write lef
+
+```tcl
+# lef command
+lef write
+```
+
+Screenshot of command run
+
+![Screenshot 2024-12-22 134935](https://github.com/user-attachments/assets/2f76c86b-3c9c-4604-a982-0771f483ec7f)
+
+Screenshot of newly created lef file
+
+![Screenshot 2024-12-22 142452](https://github.com/user-attachments/assets/a52bbcbc-9ce6-442f-925c-1262e0f65ea0)
+
+
 
