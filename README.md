@@ -252,10 +252,44 @@ Flop\ Ratio = \frac{1613}{14876} = 0.108429685
 ```math
 Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
 ```
-## Section 2 - Good floorplan vs bad floorplan and introduction to library cells (16/03/2024 - 17/03/2024)
+# Day 2
 
-### Theory
+## Good FloorPlan Vs Bad FloorPlan and Introduction to Library Cells
+Chip FloorPlanning Considerations
 
+Utilization Factor and Aspect Ratio
+In order to find out the Utilization Factor and Aspect Ratio, first we need to know how to define height and width of core and die areas.
+
+- Core is an area in a chip which is used to place all the logic cells and components in a chip. It is the place where logic lies in a chip.
+
+- Die is an area that encircles the core area and used for placing I/O related components.
+
+
+The height and width of core area will be decided by the netlist of the design. It will be based on the no.of components required in order to execute the logic and the height and width of the die area will be dependent on the core area height and width.
+
+For example, lets consider a netlist that is having two logic gates and two flipflops each having area of 1 sq.unit. The netlist contains 4 elements and the minimum total area required for the core area will be 4 sq.units.
+
+*Utilization Factor :*  Utilization Factor is defined as "The ratio of the core area occupied by the netlist to the total core area".For a good FloorPlan, The Utilization Factor should never be '1' because when the Utilization factor becomes '1' , there will be no place for adding additional logic if needed and it will be considered as a bad FloorPlan.
+
+
+`Utilization Factor = (Area occupied by netlist / Total core area)`
+
+*Aspect Ratio :*  Aspect Ratio is defined as "The ratio of Height of the core to the width of the core". If the Aspect ratio is '1' , then the core is said to be in a square shape and other than '1' the core will be a rectangle.
+
+`Aspect Ratio = (Height of the core / Width of the core)`
+
+
+In this case, when calculated
+
+- Utilization factor = (4 squnits)/(4 squnits) = 1
+
+- Aspect Ratio = (2 units)/(2 units) = 1 //The core is in a square shape.
+
+In this case, when calculated
+
+- Utilization factor = (4 squnits)/(8 squnits) = 0.5
+
+- Aspect Ratio = (2 units)/(4 units) = 0.5 //The core is in a rectangular shape.
 ### Implementation
 
 Section 2 tasks:- 
