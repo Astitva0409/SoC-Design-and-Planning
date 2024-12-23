@@ -632,4 +632,51 @@ Screenshot of custom inverter layout in magic NMOS and PMOS identified
 
 ![Screenshot 2024-12-19 214132](https://github.com/user-attachments/assets/fa9de724-f830-43e4-892a-e0b1c72f4de8)
 
+#### 3. Spice extraction of inverter in magic.
+
+Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+
+```tcl
+# Check current directory
+pwd
+
+# Extraction command to extract to .ext format
+extract all
+
+# Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+# Converting to ext to spice
+ext2spice
+```
+![Screenshot 2024-12-20 004218](https://github.com/user-attachments/assets/ee6b7964-8022-4b9b-8461-48f7df369d11)
+
+Screenshot of created spice file
+![Screenshot 2024-12-20 011035](https://github.com/user-attachments/assets/00484b7c-2289-4fc1-91b1-5f7896aa54dc)
+
+#### 4. Editing the spice model file for analysis through simulation.
+
+Measuring unit distance in layout grid
+
+![Screenshot 2024-12-20 004218](https://github.com/user-attachments/assets/7e713f18-81d6-4f1e-a848-5169e861bea6)
+
+Final edited spice file ready for ngspice simulation
+
+![Screenshot 2024-12-20 011035](https://github.com/user-attachments/assets/182902f8-d54d-4241-b873-628af1e3ef39)
+
+#### 5. Post-layout ngspice simulations.
+
+Commands for ngspice simulation
+
+```bash
+# Command to directly load spice file for simulation to ngspice
+ngspice sky130_inv.spice
+
+# Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+plot y vs time a
+```
+
+Screenshots of ngspice run
+
+
 
