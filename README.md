@@ -490,6 +490,74 @@ SPICE models             These models describe transistor behavior for circuit s
 
 ### Theory
 
+# Inverter Characterization using Sky130 Model Files
+
+
+## CMOS Inverter Simulation with ngspice
+
+This guide demonstrates how to create a basic CMOS inverter netlist, perform DC and transient analyses using ngspice, and understand key static and dynamic characteristics.
+
+## Static Characteristics
+
+1. **Switching Threshold (Vth):**
+   - The voltage at which the inverter transitions from the high state (logic 1) to the low state (logic 0).
+2. **Input Low Voltage (Vil):**
+   - The maximum input voltage considered as logic 0.
+3. **Input High Voltage (Vih):**
+   - The minimum input voltage considered as logic 1.
+4. **Output Low Voltage (Vol):**
+   - The voltage at which the output transitions from high to low.
+5. **Output High Voltage (Voh):**
+   - The voltage at which the output transitions from low to high.
+6. **Noise Margins:**
+   - The voltage range between Vil and Vol (low noise margin) and between Vih and Voh (high noise margin).
+
+## Dynamic Characteristics
+
+1. **Propagation Delays:**
+   - The time taken for the output to change after a change in input.
+2. **Rise Time (tr):**
+   - The time taken for the output to transition from Vol to Voh.
+3. **Fall Time (tf):**
+   - The time taken for the output to transition from Voh to Vol.
+
+
+
+# Design library cell using Magic Layout and ngspice characterization
+## Creating Standard Cell Layout
+
+1. **Design the Inverter Layout:**
+   - Use a layout tool (such as MAGIC) to create the inverter layout.
+   - Follow process-specific design rules and guidelines.
+   - Place standard cells (transistors, metal layers, etc.) based on the logical schematic.
+
+2. **Extraction Process:**
+   - After layout creation, extract parasitic capacitances and resistances.
+   - In the `tkcon` window, execute the command `extract all`.
+   - This generates an extracted file with parasitic information (e.g., capacitances, interconnect resistance).
+   - The extracted file is saved in the `vsdstdcelldesign` directory.
+
+3. **SPICE Netlist:**
+   - Use the extracted data to create a SPICE-compatible netlist (usually in `.sp` or `.cir` format).
+   - Include transistor models, capacitances, and resistances.
+   - Use this netlist for simulation in tools like ngspice.
+
+
+## Introduction to LEF Files in VLSI Design
+In VLSI (Very Large Scale Integration) design, LEF (Library Exchange Format) files play a crucial role in interfacing between layout tools and place-and-route (PnR) tools. Here’s what you need to know:
+
+Purpose of LEF Files:
+
+The entire layout information of a block (whether it’s a macro or a standard cell) is not necessary for PnR tools.
+PnR tools require minimal information, including the PR boundary (bounding box) and pin positions.
+LEF files provide an abstract representation of the block, exposing only the essential details needed for PnR.
+
+
+
+| Cell LEF	 | Abstract view of the cell which holds information about PR boundary, pin positions and metal layer information.  |
+|---------------|---------------|
+| Technology LEF | Holds information about the metal layers, via, DRC technology used by placer and router.|
+
 
 ### Implementation
 
