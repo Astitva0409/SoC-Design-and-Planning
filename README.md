@@ -688,4 +688,45 @@ Screenshot of generated plot
 ![Screenshot 2024-12-20 024040](https://github.com/user-attachments/assets/5032ae92-cbf0-42b1-9949-8126cdf4e7dc)
 
 
+Rise transition time calculation
+
+```math
+Rise\ transition\ time = Time\ taken\ for\ output\ to\ rise\ to\ 80\% - Time\ taken\ for\ output\ to\ rise\ to\ 20\%
+```
+```math
+20\%\ of\ output = 660\ mV
+```
+```math
+80\%\ of\ output = 2.64\ V
+```
+
+20% Screenshots
+
+![Screenshot 2024-12-20 154226](https://github.com/user-attachments/assets/fe5d52c4-4d06-433d-a9fa-0f078225948c)
+
+![Screenshot 2024-12-20 154344](https://github.com/user-attachments/assets/e52d5389-a80a-4c39-8456-1057a2d07007)
+
+80% Screenshots
+
+![Screenshot 2024-12-20 154821](https://github.com/user-attachments/assets/fbddd18d-908e-465f-93d2-af6032969647)
+
+![Screenshot 2024-12-20 154830](https://github.com/user-attachments/assets/53f1e5e6-d303-454e-a293-626b2c134664)
+
+```math
+Rise\ transition\ time = 6.25279 - 6.18538 = 0.06741\ ns = 67.41\ ps
+```
+
+Fall transition time calculation
+
+```math
+Fall\ transition\ time = Time\ taken\ for\ output\ to\ fall\ to\ 20\% - Time\ taken\ for\ output\ to\ fall\ to\ 80\%
+```
+```math
+20\%\ of\ output = 660\ mV
+```
+```math
+80\%\ of\ output = 2.64\ V
+```
+
+20% Screenshots
 
