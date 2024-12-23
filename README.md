@@ -679,5 +679,13 @@ plot y vs time a
 
 Screenshots of ngspice run
 
+![Screenshot 2024-12-20 021308](https://github.com/user-attachments/assets/ab770af2-5ce9-4c6a-a8d1-937a8f3a7be3)
+
+![Screenshot 2024-12-20 021414](https://github.com/user-attachments/assets/e8f73dda-34c2-426a-b909-f26a3709ad5a)
+
+
+Screenshot of generated plot
+![Screenshot 2024-12-20 024040](https://github.com/user-attachments/assets/5032ae92-cbf0-42b1-9949-8126cdf4e7dc)
+
 
 
