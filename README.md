@@ -40,10 +40,9 @@ Expand or Collapse
 * ***FOUNDRY***
 
 While repeating digital logic blocks are known as ***MACROS***, semiconductor chips are made at ***FOUNDRY***, where ***FOUNDRY IP's*** are intellectual properties based on a particular foundry and require a certain amount of intelligence to generate.
-</details>
 ![Screenshot 2024-12-23 133158](https://github.com/user-attachments/assets/e5939f3c-bfc5-4292-846c-6d1523b179f6)
 
-#### ISA (Intruction Set Architecture)
+####ISA (Intruction Set Architecture)
 
 * A C program which has to be run on a specific hardware layout which is the interior of a chip in your laptop, there is certain flow to be followed.
 * Initially, this particular C program is compiled in it's assembly language program which is nothing but ***RISC-V ISA (Reduced Instruction Set Compting - V Intruction Set Architecture)***.
