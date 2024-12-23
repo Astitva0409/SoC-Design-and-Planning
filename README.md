@@ -113,7 +113,9 @@ Placement:
         Standard Cells required in the design are also placed within their cell boundaries.
         Placement is performed in two stages: Global Placement (where cells may overlap) and Detailed Placement (where cells are optimally placed following placement rules).
 
-![Screenshot 2024-12-23 171035](https://github.com/user-attachments/assets/8a6f256a-b330-43e4-be7f-f42e6feb63d9)
+![Screenshot 2024-12-23 171028](https://github.com/user-attachments/assets/d25884ff-c87b-488c-8841-8d5f0caeae03)
+
+
 
  CTS (Clock Tree Synthesis):
         Clock routing is performed before signal routing to address clock skew, the difference in time for the clock to reach various destinations.
@@ -125,7 +127,7 @@ Routing:
         After clock routing, signal routing is performed using the remaining metal layers.
         Routing is divided into Global Routing (generates a routing guide based on PDK instructions) and Detailed Routing (actual routing according to the guide).
 
-![Screenshot 2024-12-23 171028](https://github.com/user-attachments/assets/d25884ff-c87b-488c-8841-8d5f0caeae03)
+![Screenshot 2024-12-23 171035](https://github.com/user-attachments/assets/8a6f256a-b330-43e4-be7f-f42e6feb63d9)
 
  Sign-off:
         Once routing is completed, the chip undergoes various checks during the sign-off stage:
