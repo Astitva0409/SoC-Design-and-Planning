@@ -1295,6 +1295,93 @@ Newly created `my_base.sdc` for STA analysis in `openlane/designs/picorv32a/src`
 ![Screenshot 2024-12-22 231258](https://github.com/user-attachments/assets/90fff94a-b7c4-4c54-b485-9c82eacfa272)
 
 
+Commands to run STA in another terminal
+
+```bash
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Command to invoke OpenSTA tool with script
+sta pre_sta.conf
+```
+![Screenshot 2024-12-22 231247](https://github.com/user-attachments/assets/472e556a-388a-4d5f-b375-90ad75021880)
+
+![Screenshot 2024-12-22 231520](https://github.com/user-attachments/assets/80d6ca83-361f-4c86-99e4-44c14c1283cf)
+
+To fix this slack we use
+
+```
+# Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 22-12_11-34 -overwrite
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+```
+![Screenshot 2024-12-22 231532](https://github.com/user-attachments/assets/e8933b30-68c1-4896-871e-e128adf22a1b)
+
+finally after running placement 
+
+![Screenshot 2024-12-23 011656](https://github.com/user-attachments/assets/d54f1257-e7f9-4ae7-94cb-6717d15f8ecc)
+
+## Section 5 - Final steps for RTL2GDS using tritonRoute and openSTA 
+
+### Theory
+
+
+## Power Distribution Network (PDN) Generation in OpenLANE
+
+In OpenLANE, the PDN (Power Distribution Network) is crucial for proper power delivery within the chip. Let's walk through the steps to build the PDN:
+
+## 1. PDN Generation
+
+- The PDN ensures that all standard cells and macros receive adequate power.
+- It provides a network of power rails (VDD and VSS) across the chip.
+
+## 2. Using `gen_pdn` Procedure
+
+- The `gen_pdn` procedure is responsible for running the PDN generation process.
+- It sets up the power grid, defines power rails, and ensures proper connectivity.
+
+## Common Issues
+
+1. **`LIB_SYNTH_COMPLETE`:**
+   - This variable must be defined in the `config.tcl` file.
+   - It is called by the `gen_pdn` procedure defined in the `or_pdn.tcl` file.
+
+2. **`LEF_MERGED_UNPADDED`:**
+   - Ensure that this variable is correctly set in the `config.tcl` file.
+   - It provides essential information for PDN generation.
+
+### Implementation
+
+* Section 5 tasks:-
+1. Perform generation of Power Distribution Network (PDN) and explore the PDN layout.
+2. Perfrom detailed routing using TritonRoute.
+3. Post-Route parasitic extraction using SPEF extractor.
+4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
 
 
 
