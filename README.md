@@ -1060,5 +1060,44 @@ Screenshot of newly created lef file
 
 ![Screenshot 2024-12-22 142452](https://github.com/user-attachments/assets/a52bbcbc-9ce6-442f-925c-1262e0f65ea0)
 
+#### 4. Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+
+Commands to copy necessary files to 'picorv32a' design 'src' directory
+
+```bash
+# Copy lef file
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# Copy lib files
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+# List and check whether it's copied
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+Screenshot of commands run
+
+![Screenshot 2024-12-22 143716](https://github.com/user-attachments/assets/16194843-fe13-4ea1-8f57-98adffb57ea7)
+
+
+#### 5. Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+
+Commands to be added to config.tcl to include our custom cell in the openlane flow
+
+```tcl
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+
+Edited config.tcl to include the added lef and change library to ones we added in src directory
+
+![Screenshot 2024-12-22 144904](https://github.com/user-attachments/assets/f89c51ec-0e5d-4231-babc-b0c4d8d92269)
 
 
