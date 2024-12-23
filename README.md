@@ -362,3 +362,4 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 
 Screenshots of floorplan def in magic
+![Screenshot 2024-12-17 223714](https://github.com/user-attachments/assets/770bc892-6880-40ae-98ad-3d447908f70c)
