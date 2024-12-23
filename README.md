@@ -87,3 +87,47 @@ PDK (Process Design Kit) is a set of files used to model a fabrication process f
 Digital Standard Cell Libraries
 
  I/O Libraries
+<br>
+## Simplified RTL to GDS Flow
+
+The simplified RTL to GDS flow begins with an RTL file and, through a series of stages, produces a GDS file, which can be sent to a foundry for fabrication. The steps in the RTL to GDS flow include:
+
+![Screenshot 2024-12-23 170458](https://github.com/user-attachments/assets/d22f4f74-2c3b-44a0-8a4e-8d6ffdc1934c)
+
+ Synthesis:
+        The RTL file is converted into a circuit using components from the Standard Cell Library.
+        Standard Cells in the library have a regular layout with the same height but different widths.
+        Each cell has various models based on electrical, HDL, Spice, and layout (abstract and detailed) parameters.
+
+![Screenshot 2024-12-23 170900](https://github.com/user-attachments/assets/628e73ec-0002-461c-a9ef-0435fb16bae6)
+
+
+Floor Planning & Power Planning:
+        Floor Planning: Determines the position of components on the chip to minimize area, including the placement of I/O pins, ports, and pads.
+        Power Planning: Designs the power supply network (VDD and GND) using power rings, power straps, and power pads, typically on the top metal layers for minimal resistance and delay.
+
+![Screenshot 2024-12-23 170940](https://github.com/user-attachments/assets/1b567952-6f7d-43c0-9bed-eba8341138b4)
+
+Placement:
+        Components are placed within the designated areas from the floor planning stage.
+        Standard Cells required in the design are also placed within their cell boundaries.
+        Placement is performed in two stages: Global Placement (where cells may overlap) and Detailed Placement (where cells are optimally placed following placement rules).
+
+![Screenshot 2024-12-23 171035](https://github.com/user-attachments/assets/8a6f256a-b330-43e4-be7f-f42e6feb63d9)
+
+ CTS (Clock Tree Synthesis):
+        Clock routing is performed before signal routing to address clock skew, the difference in time for the clock to reach various destinations.
+        Symmetric Tree Structures (H-tree, I-tree, X-tree) are used to eliminate clock skew.
+
+![Screenshot 2024-12-23 171046](https://github.com/user-attachments/assets/761e3cad-ccf8-43f1-90ad-21a63e7ca71a)
+
+Routing:
+        After clock routing, signal routing is performed using the remaining metal layers.
+        Routing is divided into Global Routing (generates a routing guide based on PDK instructions) and Detailed Routing (actual routing according to the guide).
+
+![Screenshot 2024-12-23 171028](https://github.com/user-attachments/assets/d25884ff-c87b-488c-8841-8d5f0caeae03)
+
+ Sign-off:
+        Once routing is completed, the chip undergoes various checks during the sign-off stage:
+            Physical Verification Checks: Design Rule Check (DRC) and Layout vs. Schematic (LVS). DRC verifies design rule compliance, while LVS ensures functional correctness against the gate-level netlist.
+            Timing Checks: Static Timing Analysis (STA) checks the design for timing violations.
