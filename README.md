@@ -71,3 +71,19 @@ To design an open-source digital ASIC, several key components are required:
 - PDK Data
 
 ![Screenshot 2024-12-23 133846](https://github.com/user-attachments/assets/bbea54ba-e2bd-412c-9c7e-83b18d19229c)
+
+What are RTL Designs?
+
+RTL (Register-Transfer-Level) design is a critical phase in the VLSI design flow, focused on creating electronic circuits using integrated circuits (ICs). It specifies a digital circuit by describing the flow of digital signals between hardware registers and the logical operations performed on these signals.
+What are EDA Tools?
+
+EDA (Electronic Design Automation) tools are software applications used to design and verify the functionality of integrated circuits (ICs). They ensure that the IC meets the required performance and density specifications.
+What is PDK Data?
+
+PDK (Process Design Kit) is a set of files used to model a fabrication process for EDA tools during IC design. This kit includes:
+
+  -  Process Design Rules: DRC (Design Rule Check), LVS (Layout Versus Schematic), PEX (Parasitic Extraction)
+ Device Models
+Digital Standard Cell Libraries
+
+ I/O Libraries
