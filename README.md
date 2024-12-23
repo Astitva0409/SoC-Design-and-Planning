@@ -212,6 +212,24 @@ prep -design picorv32a
 # Now that the design is prepped and ready, we can run synthesis using the command
 run_synthesis
 ```
+Once the preparation is complete, a new directory with the current date will be generated within the “runs” folder. Inside this directory, all the necessary subdirectories for storing results, reports, and other relevant data will be created.
+The preparation step involves the following actions for the picorv32a design within the openLANE flow:
+
+**Directory Structure Setup:**
+
+A new directory structure is created to organize the design files.
+This structure includes subdirectories for different components (e.g., results, reports).
+
+- LEF Merging:
+The technology LEF (.tlef) and cell LEF (.lef) files are merged into a unified format.The technology LEF contains layer information (such as metal layers), while the cell LEF contains cell informations.
+
+- Design Placement:
+All design-related files are placed under the designs directory.
+
+This ensures that the necessary files are organized and accessible during subsequent steps.
+
+ `config.tcl`	  contains the configurations used by openLANE                     
+ `src`  contains verilog files and constraints file
 
 Screenshots of running the commands
 
