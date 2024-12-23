@@ -234,3 +234,20 @@ Flop\ Ratio = \frac{1613}{14876} = 0.108429685
 ```math
 Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
 ```
+## Section 2 - Good floorplan vs bad floorplan and introduction to library cells (16/03/2024 - 17/03/2024)
+
+### Theory
+
+### Implementation
+
+Section 2 tasks:- 
+1. Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
+2. Calculate the die area in microns from the values in floorplan def.
+3. Load generated floorplan def in magic tool and explore the floorplan.
+4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+5. Load generated placement def in magic tool and explore the placement.
+
+```math
+Area\ of\ die\ in\ microns = Die\ width\ in\ microns * Die\ height\ in\ microns
+```
+
