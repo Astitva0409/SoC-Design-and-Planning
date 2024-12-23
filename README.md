@@ -558,6 +558,36 @@ LEF files provide an abstract representation of the block, exposing only the ess
 |---------------|---------------|
 | Technology LEF | Holds information about the metal layers, via, DRC technology used by placer and router.|
 
+VLSI Routing: Tracks and Routes
+
+In VLSI design, understanding tracks and routes is essential for successful interconnect design. Let's break it down:
+
+## Tracks
+
+- **Definition:**
+  - Tracks represent predefined horizontal and vertical paths on each metal layer.
+  - They serve as guidelines for routing wires (metal traces) within a chip.
+
+- **Purpose:**
+  - Tracks help maintain uniform spacing and alignment during routing.
+  - They simplify the routing process by providing fixed paths.
+
+## Routes
+
+- **Definition:**
+  - Routes are the actual metal traces that carry signals (such as interconnects or wires).
+  - These traces can be placed over the tracks, following specified routing rules.
+
+- **Functionality:**
+  - Routes connect different components (cells) within the chip.
+  - They form the wiring network for data flow.
+
+## `tracks.info` File
+
+- The `tracks.info` file:
+  - Provides information about horizontal and vertical tracks available on each metal layer.
+  - Specifies pitch, spacing, and other relevant details necessary for efficient routing.
+
 
 ### Implementation
 
