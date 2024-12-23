@@ -328,3 +328,8 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 Screenshots of floorplan def in magic
 ![Screenshot 2024-12-16 220130](https://github.com/user-attachments/assets/6a4d7d42-4e79-499a-850a-2b2e67e9d7b6)
 
+Port layer as set through config.tcl
+
+![Screenshot 2024-12-16 221902](https://github.com/user-attachments/assets/81d3dce4-ab8a-49b5-9b5b-73e0efe23389)
+
+![Screenshot 2024-12-16 222138](https://github.com/user-attachments/assets/5bbf0ac2-b589-40e5-b6dc-56c9db0fbcdf)
