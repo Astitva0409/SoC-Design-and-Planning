@@ -1,6 +1,8 @@
 # SoC-Design-and-Planning
 <br>
 Welcome to the OpenLane workshop! In this workshop, we will delve into the process of designing an Application Specific Integrated Circuit (ASIC) from the Register Transfer Level (RTL) to the Graphical Data System (GDS) file using the OpenLane ASIC flow. The flow is composed of several key steps, starting with an RTL file and culminating in a GDS file.
+<br>
+
 ## Lessons Learned
 
 Understanding the RTL to GDS Flow:
@@ -8,13 +10,10 @@ Understanding the RTL to GDS Flow:
 1. Grasped the end-to-end process of converting a high-level hardware description to a physical ASIC layout.
 Recognized the importance of each step in the flow, from synthesis to sign-off.
 
-2. Synthesis:
-
-Learned how RTL is converted to a gate-level netlist using standard cell libraries.
+2. Synthesis Learned how RTL is converted to a gate-level netlist using standard cell libraries.
 Identified the different views of cells (Liberty, HDL, SPICE, Layout).
 
-3. Floor and Power Planning:
-Understood the significance of floor planning in chip partitioning and I/O pad placement.
+3. Floor and Power Planning Understood the significance of floor planning in chip partitioning and I/O pad placement.
 
 ## Section 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK Day 1
 
@@ -28,6 +27,7 @@ Expand or Collapse
 #### Package
 
 *In any embedded board we encounter, what we typically refer to as the "chip" is actually the PACKAGE of the chip—a protective layer or casing that encloses the actual chip. The actual manufactured chip is usually located at the center of this package. Connections from the package to the chip are established through the WIRE BOND method, which is essentially a basic wired connection.
+<br>
 ![image](https://github.com/user-attachments/assets/14fcd3c7-68c1-45f6-b069-fed347179d30)
 ![Screenshot 2024-12-12 163552](https://github.com/user-attachments/assets/2908c18e-8596-48f3-83b5-ddd142da7279)
 ![Screenshot 2024-12-23 131240](https://github.com/user-attachments/assets/a82e54f6-a402-499c-966e-5fbd336a5853)
@@ -1235,11 +1235,6 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
 
-Screenshot of placement def in magic
-
-![Screenshot 2024-12-22 162954](https://github.com/user-attachments/assets/396e5337-a590-4049-aa05-4f3078dc8edd)
-
-
 Command for tkcon window to view internal layers of cells
 
 ```tcl
@@ -1440,7 +1435,7 @@ Commands to load PDN def in magic in another terminal
 
 ```bash
 # Change directory to path containing generated PDN def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/floorplan/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-12_11-34/tmp/floorplan/
 
 # Command to load the PDN def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
@@ -1473,7 +1468,7 @@ Commands to load routed def in magic in another terminal
 
 ```bash
 # Change directory to path containing routed def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-12_11-34/results/routing/
 
 # Command to load the routed def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
@@ -1493,6 +1488,30 @@ Screenshot of fast route guide present in `openlane/designs/picorv32a/runs/22-12
 
 ![Screenshot 2024-12-23 015127](https://github.com/user-attachments/assets/a305541c-4fa8-43ac-8202-78b831beed35)
 
+## VLSI Routing: Global Route and Detail Route
+
+In VLSI design, the routing process is divided into two main stages: global route (or fast route) and detail route. Let's explore each stage:
+
+## 1. Global Route (Fast Route)
+
+- **Purpose:**
+  - The global route focuses on quickly establishing a high-level routing solution.
+  - It divides the chip into rectangular grid cells, forming a 3D routing graph.
+
+- **Key Points:**
+  - The global route creates a routing guide, which consists of boxes (representing pins of cells).
+  - The output of the global route is a set of routing guides for each net.
+
+## 2. Detail Route
+
+- **Performed by Engine:**
+  - Detail route is executed by the engine called tritonRoute.
+  - It refines the routing solution obtained from the global route.
+
+- **Using Global Route Output:**
+  - Detail route utilizes the output from the global route, including the routing guides.
+  - Algorithms are applied to find the best possible connectivity among all the routing points.
+
 #### 3. Post-Route parasitic extraction using SPEF extractor.
 
 Commands for SPEF extraction using external tool
@@ -1502,7 +1521,7 @@ Commands for SPEF extraction using external tool
 cd Desktop/work/tools/SPEF_EXTRACTOR
 
 # Command extract spef
-python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-12_11-34/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/22-12_11-34/results/routing/picorv32a.def
 ```
 
 #### 4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
