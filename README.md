@@ -1579,7 +1579,8 @@ exit
 
 # Certificate
 
-[21_VSD_nasscom Workshop Certificate 2024GitHub Repo.pdf](https://github.com/user-attachments/files/18302159/21_VSD_nasscom.Workshop.Certificate.2024GitHub.Repo.pdf)
+![Digital-VLSI-SoC-Design-and-Planning-Certificate]![image](https://github.com/user-attachments/assets/c0f8ad1b-98e4-4c2e-999f-e7bbd25ef3d8)
+
  
 # Acknowledgements
 
