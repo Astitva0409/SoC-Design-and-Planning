@@ -1577,6 +1577,14 @@ exit
 
 ![Screenshot 2024-12-24 031234](https://github.com/user-attachments/assets/c6cbf686-5911-4ab0-aed1-633e7b1835c7)
 
+# Certificate
 
+[21_VSD_nasscom Workshop Certificate 2024GitHub Repo.pdf](https://github.com/user-attachments/files/18302159/21_VSD_nasscom.Workshop.Certificate.2024GitHub.Repo.pdf)
+ 
+# Acknowledgements
+
+* [Kunal Ghosh](https://github.com/kunalg123), Co-founder, VSD Corp. Pvt. Ltd.
+* [Nickson P Jose](https://github.com/nickson-jose), Physical Design Engineer, Intel Corporation.
+* [R. Timothy Edwards](https://github.com/RTimothyEdwards), Senior Vice President of Analog and Design, efabless Corporation.
 
 
